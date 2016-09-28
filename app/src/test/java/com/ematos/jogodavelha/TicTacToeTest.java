@@ -43,12 +43,26 @@ public class TicTacToeTest {
     public void returnsTrueifGameHasFinished() throws Exception {
         TicTacToe t = new TicTacToe();
 
-        for (int i = 0; i < 9; i++) {
-            assertFalse(t.hasFinished());
-            t.move(i);
-        }
+        t.move(0); assertFalse(t.hasFinished());
+        t.move(1); assertFalse(t.hasFinished());
+        t.move(2); assertFalse(t.hasFinished());
+        t.move(3); assertFalse(t.hasFinished());
+        t.move(5); assertFalse(t.hasFinished());
+        t.move(4); assertFalse(t.hasFinished());
+        t.move(6); assertFalse(t.hasFinished());
+        t.move(8); assertFalse(t.hasFinished());
+        t.move(7); assertTrue(t.hasFinished());
+    }
 
-        assertTrue(t.hasFinished());
+    @Test
+    public void returnsTrueifGameHasFinishedEarlyWithAWinner() throws Exception {
+        TicTacToe t = new TicTacToe();
+
+        t.move(0); assertFalse(t.hasFinished());
+        t.move(8); assertFalse(t.hasFinished());
+        t.move(1); assertFalse(t.hasFinished());
+        t.move(7); assertFalse(t.hasFinished());
+        t.move(2); assertTrue(t.hasFinished());
     }
 
     @Test
